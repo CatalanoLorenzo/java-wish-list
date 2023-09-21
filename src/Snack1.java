@@ -70,7 +70,7 @@ public class Snack1 {
 
 			listaRegali.add(new ElementoLista(regalo, destinatario));
 		} while (true);
-
+		input.close();
 		// Stampa i regali alla fine
 		listaRegali.forEach(elemento -> System.out.println(elemento));
 	}
