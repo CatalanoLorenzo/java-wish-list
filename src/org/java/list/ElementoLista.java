@@ -1,3 +1,4 @@
+package org.java.list;
 
 public class ElementoLista {
 private String destinatario;

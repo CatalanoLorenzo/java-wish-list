@@ -9,6 +9,7 @@
 //
 //#### Bonus
 //- ogni elemento salvato in lista non deve avere solo il nome ma anche a chi è destinato (mamma, papà, cugino,  …)
+package org;
 
 import java.util.ArrayList;
 import java.util.HashMap;
