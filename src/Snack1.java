@@ -17,33 +17,62 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Snack1 {
-public static void main(String[] args) {
-	
-	ArrayList<String> listaRegali = new ArrayList<String>();
-	
-	Scanner input = new Scanner(System.in);
-	HashSet<String> destinatari = new HashSet<String>()	;
-	Map<String, String> listaRegaliConDestinatari = new HashMap<>();
-	while(true) {
-		System.out.println(" La tua lista regali ha : " + listaRegali.size() + " articoli ");
-		System.out.print("Quale regalo vuoi inserire nella lista ? :");
-		String nuovoRegalo=input.nextLine() ;
-		if(nuovoRegalo.toLowerCase().equals("fine")) {
-			break;
-		}
-		System.out.print("A chi è destinato il regalo? :");
-		String destinatario=input.nextLine() ;
-		if(listaRegaliConDestinatari.containsKey(destinatario)) {
-			listaRegaliConDestinatari.put(destinatario,listaRegaliConDestinatari.get(destinatario)+ "," + nuovoRegalo);
-		}else {
-			listaRegaliConDestinatari.put(destinatario, nuovoRegalo);
-		}
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		// METODO CON MAP
+//	ArrayList<String> listaRegali = new ArrayList<String>();
+//	
+//	
+//	Map<String, String> listaRegaliConDestinatari = new HashMap<>();
+//	while(true) {
+//		System.out.println(" La tua lista regali ha : " + listaRegali.size() + " articoli ");
+//		System.out.print("Quale regalo vuoi inserire nella lista ? :");
+//		String nuovoRegalo=input.nextLine() ;
+//		
+//		if(nuovoRegalo.toLowerCase().equals("fine")) {
+//			break;
+//		}
+//		
+//		System.out.print("A chi è destinato il regalo? :");
+//		String destinatario=input.nextLine() ;
+//		if(listaRegaliConDestinatari.containsKey(destinatario)) {
+//			listaRegaliConDestinatari.put(destinatario,listaRegaliConDestinatari.get(destinatario)+ "," + nuovoRegalo);
+//		}else {
+//			listaRegaliConDestinatari.put(destinatario, nuovoRegalo);
+//		}
+//
+//	
+//		listaRegali.add(nuovoRegalo);
+//	}
+//	System.out.println(	listaRegaliConDestinatari.toString());
+		// METODO CON CASS
+		String destinatario = null;
+		String regalo = null;
+		ArrayList<ElementoLista> listaRegali = new ArrayList<ElementoLista>();
 
-	
-		listaRegali.add(nuovoRegalo);
+		do {
+			System.out.println("A chi vuoi fare un regalo? scrivi fine per interompere: ");
+			destinatario = input.nextLine();
+
+			if (destinatario.equalsIgnoreCase("fine")) {
+				break;
+			}
+			 while (true) {
+	                System.out.println("aggiungi un regalo, scrivi stop per interrompere");
+	                String altroRegalo = input.nextLine();
+	                 regalo += "," + altroRegalo;
+	                if (altroRegalo.toLowerCase().equals("stop")) {
+	                    break;
+	                }
+	            
+			}
+			
+
+			listaRegali.add(new ElementoLista(regalo, destinatario));
+		} while (true);
+
+		// Stampa i regali alla fine
+		listaRegali.forEach(elemento -> System.out.println(elemento));
 	}
-	System.out.println(	listaRegaliConDestinatari.toString());
 
-	
-}
 }
